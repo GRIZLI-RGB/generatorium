@@ -44,12 +44,12 @@ export default function Home() {
 			<main className="flex-grow flex flex-col items-center justify-center px-4 py-16 max-[768px]:py-10">
 				<div className="text-center w-full">
 					<h1 className="mb-4 flex items-center justify-center">
-						<img className="-mr-1" src="/favicon.ico" alt="" />
+						<img className="-mr-1 max-[568px]:h-12" src="/favicon.ico" alt="" />
 						<span className="text-[#1786da] tracking-[0.01em] text-4xl md:text-5xl font-bold">
 							eneratorium
 						</span>
 					</h1>
-					<p className="text-gray-500 text-lg mb-10">
+					<p className="text-gray-500 text-lg mb-10 max-[768px]:mb-8 max-[568px]:text-[16px]">
 						Онлайн-генераторы для всего: создавай пароли, имена,
 						фразы, идеи за секунды
 					</p>
@@ -71,7 +71,7 @@ export default function Home() {
 							onKeyDown={(e) =>
 								e.key === "Enter" && handleSearchSubmit()
 							}
-							className="w-full pl-12 pr-10 py-4 rounded-full border border-gray-300 focus:border-blue-500 text-lg"
+							className="w-full pl-12 pr-10 py-4 rounded-full border border-gray-300 focus:border-blue-500 max-[568px]:py-3 text-lg max-[568px]:text-[16px]"
 						/>
 						{searchQuery && (
 							<button
@@ -112,7 +112,7 @@ export default function Home() {
 					</div>
 
 					{/* Популярные */}
-					<div className="mb-12">
+					<div className="mb-12 max-[768px]:mb-8">
 						<h2 className="text-sm text-gray-400 uppercase mb-4 tracking-wide font-medium">
 							Популярное
 						</h2>

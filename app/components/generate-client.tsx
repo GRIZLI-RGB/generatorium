@@ -51,7 +51,7 @@ export default function GenerateClient({ slug, settings = {} }: Props) {
 					/>
 				)}
 				<div
-					className={`text-2xl max-[520px]:text-xl font-semibold ${
+					className={`text-2xl max-[568px]:text-xl font-semibold ${
 						slug === "color" && options.preview
 							? "bg-gray-100 p-4 rounded-b-xl"
 							: "bg-gray-100 p-4 rounded-xl"
@@ -98,7 +98,7 @@ export default function GenerateClient({ slug, settings = {} }: Props) {
 					</button>
 
 					{showSettings && (
-						<div className="mt-4 grid grid-cols-2 gap-3 max-[520px]:gap-2 max-[520px]:flex max-[520px]:flex-col">
+						<div className="mt-4 grid grid-cols-2 gap-3 max-[568px]:gap-1.5 max-[568px]:flex max-[568px]:flex-col">
 							{Object.entries(settings).map(([key, config]) => {
 								if (config.type === "checkbox") {
 									return (
@@ -107,7 +107,7 @@ export default function GenerateClient({ slug, settings = {} }: Props) {
 											onClick={() =>
 												toggleOption(key, !options[key])
 											}
-											className={`cursor-pointer p-4 rounded-lg border text-sm text-center transition ${
+											className={`cursor-pointer p-4 rounded-lg border max-[568px]:p-3 text-sm text-center transition ${
 												options[key]
 													? "bg-blue-600 text-white border-blue-600 shadow-md"
 													: "bg-white text-gray-800 border-gray-200 hover:border-blue-400"
@@ -120,10 +120,10 @@ export default function GenerateClient({ slug, settings = {} }: Props) {
 								if (config.type === "range") {
 									return (
 										<div
-											className="col-span-2 my-2.5"
+											className="col-span-2 my-2.5 max-[768px]:my-2"
 											key={key}
 										>
-											<div className="mb-1 text-sm font-medium text-gray-700">
+											<div className="mb-1 max-[768px]:mb-0.5 text-sm font-medium text-gray-700">
 												Длина:{" "}
 												<span className="font-semibold">
 													{options.length}

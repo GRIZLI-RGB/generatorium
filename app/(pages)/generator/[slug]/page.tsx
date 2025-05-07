@@ -25,13 +25,13 @@ export default function GeneratorPage({ params }: GeneratorPageProps) {
 	if (!generator) return notFound();
 
 	return (
-		<main className="min-h-screen flex flex-col items-center justify-center p-6 max-[768px]:p-4 bg-white">
+		<main className="min-h-screen flex flex-col items-center justify-center p-6 max-[768px]:px-4 max-[768px]:pt-8  bg-white">
 			<div className="text-center max-w-2xl w-full">
 				<div>
-					<h1 className="text-3xl font-bold mb-2">
+					<h1 className="text-3xl font-bold mb-2 max-[768px]:text-[26px]">
 						{generator.emoji} {generator.title}
 					</h1>
-					<p className="text-gray-500 mb-8">
+					<p className="text-gray-500 mb-8 max-[768px]:mb-6">
 						{generator.description}
 					</p>
 

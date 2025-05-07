@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
 	return (
-		<footer className="bg-gray-50 text-center text-sm text-gray-500 py-8 border-t border-gray-200">
+		<footer className="bg-gray-50 text-center text-sm text-gray-500 py-8 border-t max-[768px]:py-5 border-gray-200">
 			<div className="container mx-auto px-4">
 				<div className="mb-3">
 					© {new Date().getFullYear()} <strong>Generatorium</strong> —
@@ -11,12 +11,12 @@ export default function Footer() {
 					людей
 				</div>
 				<nav className="flex flex-wrap justify-center gap-4 text-xs">
-					<Link
+					{/* <Link
 						href="/about"
 						className="hover:text-blue-600 transition-colors"
 					>
 						О проекте
-					</Link>
+					</Link> */}
 					<Link
 						target="_blank"
 						href="/api"
