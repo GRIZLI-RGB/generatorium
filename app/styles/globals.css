@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+*,
+*::after,
+*::before {
+	transition: all 0.2s;
+}
+
+body {
+	background-color: white;
+	color: #111;
+	scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+a,
+button,
+input[type="button"] {
+	cursor: pointer;
+}
+
+input:focus {
+	outline: none;
+}
+
+.flex-middle {
+	@apply flex items-center justify-center;
+}
+
+@keyframes glitch {
+	0% { transform: translate(0); }
+	20% { transform: translate(-1px, 1px); }
+	40% { transform: translate(-1px, -1px); }
+	60% { transform: translate(1px, 1px); }
+	80% { transform: translate(1px, -1px); }
+	100% { transform: translate(0); }
+}
+
+.animate-glitch {
+	animation: glitch 1s infinite;
+}
