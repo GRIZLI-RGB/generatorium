@@ -117,7 +117,7 @@ export default function Home() {
 							Популярное
 						</h2>
 
-						<div className="flex flex-wrap justify-center gap-3">
+						<div className="flex flex-wrap justify-center gap-3 max-[768px]:gap-1.5">
 							{popularGenerators.map(({ name, emoji, slug }) => (
 								<button
 									key={name}
