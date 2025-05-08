@@ -1,16 +1,28 @@
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+	title: "Контакты | Generatorium — генератор никнеймов, паролей, идей, цитат и многого другого",
+	description:
+		"Свяжитесь с командой Generatorium: предложения, баги, партнёрство. Быстрая обратная связь — напишите нам прямо сейчас!",
+};
 
 export default function ContactPage() {
 	return (
 		<main className="min-h-screen flex flex-col items-center justify-center px-4 py-20 text-center">
-			<Link href="/" className="absolute top-6 left-6 text-blue-600 hover:underline">
+			<Link
+				title="Вернуться на главную страницу"
+				href="/"
+				className="absolute top-6 left-6 text-blue-600 hover:underline"
+			>
 				← На главную
 			</Link>
 
 			<h1 className="text-3xl font-bold mb-4">Контакты</h1>
 
 			<p className="text-gray-600 max-w-xl mb-6">
-				Хочешь предложить вариант генератора, сообщить об ошибке или просто сказать «спасибо»? Напиши:
+				Хочешь предложить вариант генератора, сообщить об ошибке или
+				просто сказать «спасибо»? Напиши:
 			</p>
 
 			<div className="text-gray-700">
@@ -36,5 +48,5 @@ export default function ContactPage() {
 				</p>
 			</div>
 		</main>
-	)
+	);
 }

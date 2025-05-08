@@ -11,21 +11,24 @@ export default function Footer() {
 					людей
 				</div>
 				<nav className="flex flex-wrap justify-center gap-4 text-xs">
-					{/* <Link
+					<Link
+						title="Узнать о проекте Generatorium"
 						href="/about"
 						className="hover:text-blue-600 transition-colors"
 					>
 						О проекте
-					</Link> */}
+					</Link>
 					<Link
+						title="Документация API Generatorium для разработчиков"
 						target="_blank"
 						href="/api"
 						className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors"
-						aria-label="API документация"
+						aria-label="Перейти к документации API Generatorium"
 					>
 						API <ArrowTopRightOnSquareIcon className="w-3 h-3" />
 					</Link>
 					<Link
+						title="Связаться с командой Generatorium"
 						href="/contact"
 						className="hover:text-blue-600 transition-colors"
 					>

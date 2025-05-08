@@ -14,6 +14,7 @@ export default function NotFound() {
 				раз или вернитесь на главную.
 			</p>
 			<Link
+				title="Вернуться на главную страницу"
 				href="/"
 				className="px-6 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition text-sm font-medium"
 			>

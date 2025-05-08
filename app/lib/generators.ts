@@ -23,6 +23,238 @@ export type Generator = {
 
 export const generators: Generator[] = [
 	{
+		slug: "nickname",
+		name: "Никнейм",
+		title: "Генератор уникальных никнеймов",
+		description:
+			"Создание миллионов уникальных псевдонимов с продвинутыми настройками",
+		emoji: "👤",
+		popular: true,
+		settings: {
+			style: {
+				type: "select",
+				label: "Стиль",
+				options: [
+					{ value: "cyber", label: "Киберпанк" },
+					{ value: "fantasy", label: "Фэнтези" },
+					{ value: "abstract", label: "Абстрактный" },
+					{ value: "russian", label: "Русский" },
+				],
+				default: "cyber",
+			},
+			complexity: {
+				type: "range",
+				label: "Сложность",
+				min: 1,
+				max: 5,
+				default: 3,
+			},
+			mutations: {
+				type: "checkbox",
+				label: "Случайные мутации",
+				default: true,
+			},
+			addNumbers: {
+				type: "checkbox",
+				label: "Добавить цифры",
+				default: true,
+			},
+		},
+		generate: ({
+			style = "cyber",
+			complexity = 3,
+			mutations = true,
+			addNumbers = true,
+		}: {
+			style?: string;
+			complexity?: number;
+			mutations?: boolean;
+			addNumbers?: boolean;
+		}) => {
+			type MorphemeData = {
+				prefixes: string[];
+				cores: string[];
+				suffixes: string[];
+				connectors: string[];
+			};
+
+			const MORPHEMES: Record<string, MorphemeData> = {
+				cyber: {
+					prefixes: [
+						"Neuro",
+						"Cyber",
+						"Quantum",
+						"Nano",
+						"Hyper",
+						"X",
+						"Zero",
+						"Dark",
+					],
+					cores: [
+						"void",
+						"pulse",
+						"bit",
+						"code",
+						"flux",
+						"synth",
+						"grid",
+						"node",
+					],
+					suffixes: ["_x", "404", ".exe", "++", "~", "01"],
+					connectors: ["-", "_", "", "."],
+				},
+				fantasy: {
+					prefixes: [
+						"Shadow",
+						"Dragon",
+						"Blood",
+						"Iron",
+						"Storm",
+						"Night",
+						"Fire",
+					],
+					cores: [
+						"blade",
+						"mage",
+						"born",
+						"heart",
+						"fury",
+						"wing",
+						"horn",
+					],
+					suffixes: ["bane", "reaper", "seeker", "walker", "hunter"],
+					connectors: ["", "-", "'"],
+				},
+				abstract: {
+					prefixes: ["Zyx", "Qwert", "Asdf", "Jkl", "Vbnm", "Uiop"],
+					cores: ["ol", "iu", "ert", "tyu", "op", "asd"],
+					suffixes: ["!@", "#$", "%^", "&*", "()"],
+					connectors: ["", "", ".", "~"],
+				},
+				russian: {
+					prefixes: [
+						"Темный",
+						"Ярый",
+						"Косой",
+						"Быстрый",
+						"Стальной",
+						"Красный",
+					],
+					cores: [
+						"волк",
+						"медведь",
+						"ворон",
+						"тигр",
+						"дракон",
+						"воин",
+					],
+					suffixes: ["123", "X", "Z", "2023", "88"],
+					connectors: ["_", "", "-"],
+				},
+			};
+
+			const SPECIAL_CHARS = ["x", "z", "v", "*", "~", "_"];
+			const NUMBER_SUFFIXES = [
+				"123",
+				"88",
+				"2023",
+				"42",
+				"777",
+				"69",
+				"228",
+				"112",
+				"666",
+				"777",
+			];
+
+			const getRandom = <T>(arr: T[]): T =>
+				arr[Math.floor(Math.random() * arr.length)];
+			const randomInt = (min: number, max: number): number =>
+				Math.floor(Math.random() * (max - min + 1)) + min;
+			const shouldMutate = (): boolean =>
+				mutations && Math.random() > 0.6;
+
+			const data = MORPHEMES[style] || MORPHEMES.cyber;
+			const compLevel = Math.min(5, Math.max(1, complexity));
+
+			// Генерация основы
+			const generateBase = (): string => {
+				const parts: string[] = [];
+
+				// Добавляем префикс с вероятностью 70%
+				if (Math.random() > 0.3) {
+					parts.push(getRandom(data.prefixes));
+				}
+
+				// Добавляем 1-3 основы
+				const coreCount = randomInt(1, Math.max(1, compLevel - 1));
+				for (let i = 0; i < coreCount; i++) {
+					parts.push(getRandom(data.cores));
+				}
+
+				// Добавляем суффикс с вероятностью 50%
+				if (Math.random() > 0.5) {
+					parts.push(getRandom(data.suffixes));
+				}
+
+				// Соединяем части
+				return parts.join(getRandom(data.connectors));
+			};
+
+			let nickname = generateBase();
+
+			// Мутации
+			if (shouldMutate()) {
+				const mutationType = randomInt(1, 4);
+				const pos = randomInt(1, nickname.length - 2);
+
+				switch (mutationType) {
+					case 1:
+						nickname =
+							nickname.slice(0, pos) +
+							getRandom(SPECIAL_CHARS) +
+							nickname.slice(pos);
+						break;
+					case 2:
+						nickname = nickname
+							.split("")
+							.map((c, idx) =>
+								idx % 2 === 0
+									? c.toUpperCase()
+									: c.toLowerCase()
+							)
+							.join("");
+						break;
+					case 3:
+						nickname =
+							nickname.slice(0, pos) +
+							nickname.slice(pos, pos + 2) +
+							nickname.slice(pos);
+						break;
+					case 4:
+						nickname =
+							nickname.slice(0, pos) +
+							nickname
+								.slice(pos, pos + 2)
+								.split("")
+								.reverse()
+								.join("") +
+							nickname.slice(pos + 2);
+						break;
+				}
+			}
+
+			// Добавляем цифры
+			if (addNumbers && Math.random() > 0.3) {
+				nickname += getRandom(NUMBER_SUFFIXES);
+			}
+
+			// Ограничиваем длину
+			const maxLength = 4 + compLevel * 3;
+			return nickname.slice(0, maxLength);
+		},
+	},
+	{
 		slug: "password",
 		name: "Пароль",
 		title: "Генератор безопасных паролей",

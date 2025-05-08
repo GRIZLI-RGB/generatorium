@@ -1,22 +1,37 @@
 import type { Metadata } from "next";
 
 import { Inter } from "next/font/google";
-
-import "./styles/globals.css";
 import Script from "next/script";
 
+import "./styles/globals.css";
+
 export const metadata: Metadata = {
-	title: "Generatorium",
+	title: "Generatorium — генератор никнеймов, паролей, идей, цитат и многого другого",
 	description:
-		"Генератор паролей, имён, цитат и всего, что только можно вообразить",
+		"Generatorium — это универсальный онлайн-сервис для генерации никнеймов, паролей, идей, цитат и многого другого. Простое и бесплатное решение для любых нужд. Есть API для разработчиков.",
 	keywords: [
 		"генератор паролей",
 		"генератор имён",
 		"генератор никнеймов",
-		"идеи стартапов",
-		"случайный генератор",
 		"генератор цитат",
-		"Generatorium",
+		"генератор идей",
+		"генератор идей для стартапов",
+		"генератор случайных слов",
+		"генератор случайных чисел",
+		"генератор цвета",
+		"генератор псевдонимов",
+		"онлайн генератор",
+		"генератор названий",
+		"генератор списков",
+		"генератор текстов",
+		"рандомайзер",
+		"случайный генератор",
+		"генератор фраз",
+		"генератор email",
+		"генератор пар",
+		"генератор дат",
+		"генератор всего",
+		"generatorium",
 	],
 	openGraph: {
 		title: "Generatorium — генератор всего",
@@ -43,6 +58,22 @@ export const metadata: Metadata = {
 		images: ["https://generatorium.ru/og-image.jpg"],
 	},
 	metadataBase: new URL("https://generatorium.ru"),
+	authors: [
+		{
+			name: "Generatorium Team",
+			url: "https://generatorium.ru",
+		},
+	],
+	creator: "Generatorium",
+	applicationName: "Generatorium",
+	publisher: "Generatorium",
+	alternates: {
+		canonical: "https://generatorium.ru",
+		languages: {
+			"ru-RU": "https://generatorium.ru",
+		},
+	},
+	category: "utilities",
 };
 
 const inter = Inter({

@@ -124,19 +124,19 @@ export default function GenerateClient({ slug, settings = {} }: Props) {
 											key={key}
 										>
 											<div className="mb-1 max-[768px]:mb-0.5 text-sm font-medium text-gray-700">
-												Длина:{" "}
+												{config.label}:{" "}
 												<span className="font-semibold">
-													{options.length}
+													{options[key]}
 												</span>
 											</div>
 											<input
 												type="range"
 												min={config.min}
 												max={config.max}
-												value={options.length}
+												value={options[key]}
 												onChange={(e) =>
 													toggleOption(
-														"length",
+														key,
 														+e.target.value
 													)
 												}
