@@ -3,14 +3,21 @@ import Link from "next/link";
 
 export default function Footer() {
 	return (
-		<footer className="bg-gray-50 text-center text-sm text-gray-500 py-8 border-t max-[768px]:py-5 border-gray-200">
+		<footer
+			itemScope
+			itemType="https://schema.org/WPFooter"
+			className="bg-gray-50 text-center text-sm text-gray-500 py-8 border-t max-[768px]:py-5 border-gray-200"
+		>
 			<div className="container mx-auto px-4">
 				<div className="mb-3">
 					© {new Date().getFullYear()} <strong>Generatorium</strong> —
 					генераторы данных для разработчиков, дизайнеров и творческих
 					людей
 				</div>
-				<nav className="flex flex-wrap justify-center gap-4 text-xs">
+				<nav
+					aria-label="Дополнительная навигация"
+					className="flex flex-wrap justify-center gap-4 text-xs"
+				>
 					<Link
 						title="Узнать о проекте Generatorium"
 						href="/about"

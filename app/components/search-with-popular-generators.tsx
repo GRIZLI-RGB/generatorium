@@ -36,9 +36,20 @@ export default function SearchWithPopularGenerators() {
 
 	return (
 		<>
-			<div className="relative w-full max-w-xl mx-auto mb-6">
+			<div
+				className="relative w-full max-w-xl mx-auto mb-6"
+				role="search"
+			>
+				<label htmlFor="generator-search" className="sr-only">
+					Поиск генераторов
+				</label>
+
 				<MagnifyingGlassIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+
 				<input
+					id="generator-search"
+					aria-label="Поиск генераторов"
+					aria-controls="search-suggestions"
 					autoComplete="off"
 					ref={searchInputRef}
 					type="text"
@@ -62,7 +73,12 @@ export default function SearchWithPopularGenerators() {
 				)}
 
 				{showSuggestions && searchQuery.length > 0 && (
-					<ul className="absolute z-10 left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
+					<ul
+						id="search-suggestions"
+						role="listbox"
+						aria-label="Результаты поиска генераторов"
+						className="absolute z-10 left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden"
+					>
 						{filteredSuggestions.length > 0 ? (
 							filteredSuggestions.map(({ name, emoji, slug }) => (
 								<li key={slug}>
@@ -84,7 +100,10 @@ export default function SearchWithPopularGenerators() {
 				)}
 			</div>
 
-			<div className="mb-12 max-[768px]:mb-8">
+			<section
+				aria-labelledby="popular-generators"
+				className="mb-12 max-[768px]:mb-8"
+			>
 				<h2 className="text-sm text-gray-400 uppercase mb-4 tracking-wide font-medium">
 					Популярное
 				</h2>
@@ -100,7 +119,7 @@ export default function SearchWithPopularGenerators() {
 						</button>
 					))}
 				</div>
-			</div>
+			</section>
 		</>
 	);
 }
